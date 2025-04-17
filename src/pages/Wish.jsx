@@ -8,9 +8,20 @@ const Wish = () => {
         setWish(Wish)
     },[])
 
+    const updateLocalStorage = (updatedWish) => {
+      localStorage.setItem("wish", JSON.stringify(updatedWish));
+    };
+
+
+    const removeProduct = (index) => {
+      const updatedWish = [...wish];
+      updatedWish.splice(index, 1);
+      setWish(updatedWish);
+      updateLocalStorage(updatedWish);
+    };
 
   return (
-    <div>
+    <div style={{display: "flex", flexWrap: "wrap"}}>
         <h2>Wish</h2>
         {wish.length === 0 ? (
         <p>No items in basket.</p>
@@ -20,6 +31,7 @@ const Wish = () => {
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeL6T1wzeh7wV0CNtaRXBcLteMGHCflwPneQ&s" alt="" />
             <h3>{product.name}</h3>
             <p>{product.description}</p>
+            <button onClick={() =>removeProduct(index)}>Remove</button>
           </div>
         ))
       )}

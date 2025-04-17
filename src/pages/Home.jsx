@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Layout from '../components/layout/Layout'
 
 const Home = () => {
   const [data, setData] = useState([])
@@ -16,6 +17,7 @@ const Home = () => {
 
   return (
     <div style={{display:"flex",flexWrap:"wrap"}}>
+      <Layout/>
       {data.map(product => (
         <div key={product.id} style={{ border: "1px solid gray", margin: "10px", padding: "10px"}}>
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeL6T1wzeh7wV0CNtaRXBcLteMGHCflwPneQ&s" alt="" />
